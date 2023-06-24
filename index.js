@@ -2,27 +2,44 @@ const readline = require('readline-sync');
 
 console.log('Welcome to the calculator!');
 console.log('==========================');
-console.log('Please enter an operator: ');
+
+console.log('Please enter the operator: ');
 const op = readline.prompt();
-console.log('Please enter a number: ');
-const num1 = readline.prompt();
-console.log('Please enter a second number: ');
-const num2 = readline.prompt();
+
+console.log('How many numbers do you want to perform this operation on? ')
+const n = readline.prompt();
+const all_nums = Array(+n);
+
+for (i = 0; i < n; i++){
+    console.log(`Please enter number ${i+1}: `);
+    all_nums[i] = +readline.prompt();
+}
+
 let result;
 
 switch (op){
     case '+':
-        result = +num1 + +num2;
+        result = all_nums.reduce(
+            (accumulator, currentValue) => accumulator + currentValue,
+        );
         break;
     case '-':
-        result = +num1 - +num2;
+        result = all_nums.reduce(
+            (accumulator, currentValue) => accumulator - currentValue,
+        );
         break;
     case '*':
-        result = +num1 * +num2;
+        result = all_nums.reduce(
+            (accumulator, currentValue) => accumulator * currentValue,
+        );
         break;
     case '/':
-        result = +num1 / +num2;
+        result = all_nums.reduce(
+            (accumulator, currentValue) => accumulator / currentValue,
+        );
         break;
 }
 
-console.log(`${num1} ${op} ${num2} = ${result}`)
+console.log('The answer is: ' + result);
+
+
