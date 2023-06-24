@@ -10,14 +10,19 @@ console.log('Please enter a second number: ');
 const num2 = readline.prompt();
 let result;
 
-if (op == '+'){
-    result = +num1 + +num2;
-} else if (op == '-'){
-    result = +num1 - +num2;
-} else if (op == '*'){
-    result = +num1 * +num2;
-} else if (op == '/'){
-    result = +num1 / +num2;
+switch (op){
+    case '+':
+        result = +num1 + +num2;
+        break;
+    case '-':
+        result = +num1 - +num2;
+        break;
+    case '*':
+        result = +num1 * +num2;
+        break;
+    case '/':
+        result = +num1 / +num2;
+        break;
 }
 
 console.log(`${num1} ${op} ${num2} = ${result}`)
